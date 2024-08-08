@@ -12,7 +12,14 @@ public static class ProductEndpoints
 
     private static IResult Search(ProductsSearchRequest request, IProductService service)
     {
-        var results = service.Search(request);
-        return Results.Ok(results);
+        try
+        {
+            var results = service.Search(request);
+            return Results.Ok(results);
+        }
+        catch (Exception e)
+        {
+            return Results.BadRequest("Something went wrong");
+        }
     }
 }

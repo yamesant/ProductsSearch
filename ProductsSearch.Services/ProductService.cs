@@ -6,67 +6,69 @@ namespace ProductsSearch.Services;
 public class ProductService(IProductsCollection productsCollection) : IProductService
 {
     private readonly IQueryable<Product> _products = productsCollection.Products;
+
     public List<Product> Search(ProductsSearchRequest request)
     {
-        var result = _products;
+        var query = _products;
         if (request.OnlyMinimumPrice != null && request.OnlyMinimumPrice.Value)
         {
-            var minPrice = result.Min(p => p.Price);
-            result = result
+            var minPrice = query.Min(p => p.Price);
+            query = query
                 .Where(x => x.Price == minPrice);
         }
-        
+
         if (request.OnlyMaximumPrice != null && request.OnlyMaximumPrice.Value)
         {
-            var maxPrice = result.Max(p => p.Price);
-            result = result
+            var maxPrice = query.Max(p => p.Price);
+            query = query
                 .Where(x => x.Price == maxPrice);
         }
-        
+
         if (request.PriceGreaterThanOrEqualTo != null)
         {
-            result = result
+            query = query
                 .Where(x => x.Price >= request.PriceGreaterThanOrEqualTo);
         }
-        
+
         if (request.PriceLessThanOrEqualTo != null)
         {
-            result = result
+            query = query
                 .Where(x => x.Price <= request.PriceLessThanOrEqualTo);
         }
-        
+
         if (request.IsFantastic != null)
         {
-            result = result
+            query = query
                 .Where(x => x.Attribute.Fantastic.Value == request.IsFantastic);
         }
-        
+
         if (request.OnlyMinimumRating != null && request.OnlyMinimumRating.Value)
         {
-            var minRating = result.Min(x => x.Attribute.Rating.Value);
-            result = result
+            var minRating = query.Min(x => x.Attribute.Rating.Value);
+            query = query
                 .Where(x => x.Attribute.Rating.Value == minRating);
         }
-        
+
         if (request.OnlyMaximumRating != null && request.OnlyMaximumRating.Value)
         {
-            var maxRating = result.Max(x => x.Attribute.Rating.Value);
-            result = result
+            var maxRating = query.Max(x => x.Attribute.Rating.Value);
+            query = query
                 .Where(x => x.Attribute.Rating.Value == maxRating);
         }
-        
+
         if (request.RatingGreaterThanOrEqualTo != null)
         {
-            result = result
+            query = query
                 .Where(x => x.Attribute.Rating.Value >= request.RatingGreaterThanOrEqualTo);
         }
-        
+
         if (request.RatingLessThanOrEqualTo != null)
         {
-            result = result
+            query = query
                 .Where(x => x.Attribute.Rating.Value <= request.RatingLessThanOrEqualTo);
         }
-        
-        return result.ToList();
+
+        var result = query.ToList();
+        return result;
     }
 }
