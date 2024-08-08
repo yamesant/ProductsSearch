@@ -41,6 +41,13 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Attribute.Fantastic.Value == request.IsFantastic);
         }
         
+        if (request.OnlyMinimumRating != null && request.OnlyMinimumRating.Value)
+        {
+            var minRating = result.Min(x => x.Attribute.Rating.Value);
+            result = result
+                .Where(x => x.Attribute.Rating.Value == minRating);
+        }
+        
         return result.ToList();
     }
 }
