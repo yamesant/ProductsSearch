@@ -55,6 +55,12 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Attribute.Rating.Value == maxRating);
         }
         
+        if (request.RatingGreaterThanOrEqualTo != null)
+        {
+            result = result
+                .Where(x => x.Attribute.Rating.Value >= request.RatingGreaterThanOrEqualTo);
+        }
+        
         return result.ToList();
     }
 }

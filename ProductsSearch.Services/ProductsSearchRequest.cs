@@ -9,4 +9,5 @@ public sealed class ProductsSearchRequest
     public bool? IsFantastic { get; set; }
     public bool? OnlyMinimumRating { get; set; }
     public bool? OnlyMaximumRating { get; set; }
+    public decimal? RatingGreaterThanOrEqualTo { get; set; }
 }
