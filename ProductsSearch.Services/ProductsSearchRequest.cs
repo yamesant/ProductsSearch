@@ -10,4 +10,5 @@ public sealed class ProductsSearchRequest
     public bool? OnlyMinimumRating { get; set; }
     public bool? OnlyMaximumRating { get; set; }
     public decimal? RatingGreaterThanOrEqualTo { get; set; }
+    public decimal? RatingLessThanOrEqualTo { get; set; }
 }

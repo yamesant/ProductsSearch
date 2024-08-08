@@ -61,6 +61,12 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Attribute.Rating.Value >= request.RatingGreaterThanOrEqualTo);
         }
         
+        if (request.RatingLessThanOrEqualTo != null)
+        {
+            result = result
+                .Where(x => x.Attribute.Rating.Value <= request.RatingLessThanOrEqualTo);
+        }
+        
         return result.ToList();
     }
 }
