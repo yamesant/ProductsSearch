@@ -6,4 +6,5 @@ public sealed class ProductsSearchRequest
     public bool? OnlyMaximumPrice { get; set; }
     public decimal? PriceGreaterThanOrEqualTo { get; set; }
     public decimal? PriceLessThanOrEqualTo { get; set; }
+    public bool? IsFantastic { get; set; }
 }
