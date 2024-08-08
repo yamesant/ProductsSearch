@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using ProductsSearch.Api;
 using ProductsSearch.Core;
@@ -12,8 +14,12 @@ builder.Services.AddSingleton<IValidateOptions<ProductsCollectionConfig>, Produc
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IProductsCollection, ProductsCollection>();
-builder.Services.AddTransient<IProductService, ProductService>();
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(builder =>
+    {
+        builder.RegisterModule(new RepositoryModule());
+        builder.RegisterModule(new ServicesModule());
+    });
 
 var app = builder.Build();
 
