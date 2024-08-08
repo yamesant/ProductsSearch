@@ -29,6 +29,12 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Price >= request.PriceGreaterThanOrEqualTo);
         }
         
+        if (request.PriceLessThanOrEqualTo != null)
+        {
+            result = result
+                .Where(x => x.Price <= request.PriceLessThanOrEqualTo);
+        }
+        
         return result.ToList();
     }
 }
