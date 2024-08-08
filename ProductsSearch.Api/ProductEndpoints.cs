@@ -10,9 +10,9 @@ public static class ProductEndpoints
         group.MapPost("/search", Search);
     }
 
-    private static IResult Search(IProductService service)
+    private static IResult Search(ProductsSearchRequest request, IProductService service)
     {
-        var results = service.Search(new ProductsSearchRequest());
+        var results = service.Search(request);
         return Results.Ok(results);
     }
 }

@@ -9,6 +9,13 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
     public List<Product> Search(ProductsSearchRequest request)
     {
         var result = _products;
+        if (request.OnlyMinimumPrice != null && request.OnlyMinimumPrice.Value)
+        {
+            var minPrice = result.Min(p => p.Price);
+            result = result
+                .Where(x => x.Price == minPrice);
+        }
+        
         return result.ToList();
     }
 }
