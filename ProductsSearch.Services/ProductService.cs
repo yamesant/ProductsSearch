@@ -23,6 +23,12 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Price == maxPrice);
         }
         
+        if (request.PriceGreaterThanOrEqualTo != null)
+        {
+            result = result
+                .Where(x => x.Price >= request.PriceGreaterThanOrEqualTo);
+        }
+        
         return result.ToList();
     }
 }
