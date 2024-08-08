@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsSearch.Core", "Prod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsSearch.Api", "ProductsSearch.Api\ProductsSearch.Api.csproj", "{6D1F95C5-F5DF-4CD8-B8AE-E0EFCA894FC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsSearch.Repository", "ProductsSearch.Repository\ProductsSearch.Repository.csproj", "{5D351444-B1E6-4108-8FD9-2058AA60EC97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsSearch.Services", "ProductsSearch.Services\ProductsSearch.Services.csproj", "{569ACFAE-848F-451D-A15B-DC4D977A83DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{6D1F95C5-F5DF-4CD8-B8AE-E0EFCA894FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D1F95C5-F5DF-4CD8-B8AE-E0EFCA894FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D1F95C5-F5DF-4CD8-B8AE-E0EFCA894FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D351444-B1E6-4108-8FD9-2058AA60EC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D351444-B1E6-4108-8FD9-2058AA60EC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D351444-B1E6-4108-8FD9-2058AA60EC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D351444-B1E6-4108-8FD9-2058AA60EC97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{569ACFAE-848F-451D-A15B-DC4D977A83DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569ACFAE-848F-451D-A15B-DC4D977A83DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569ACFAE-848F-451D-A15B-DC4D977A83DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569ACFAE-848F-451D-A15B-DC4D977A83DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

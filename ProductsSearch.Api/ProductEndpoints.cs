@@ -1,3 +1,5 @@
+using ProductsSearch.Services;
+
 namespace ProductsSearch.Api;
 
 public static class ProductEndpoints
@@ -8,8 +10,9 @@ public static class ProductEndpoints
         group.MapPost("/search", Search);
     }
 
-    private static IResult Search()
+    private static IResult Search(IProductService service)
     {
-        return Results.Ok("All good");
+        var results = service.Search(new ProductsSearchRequest());
+        return Results.Ok(results);
     }
 }
