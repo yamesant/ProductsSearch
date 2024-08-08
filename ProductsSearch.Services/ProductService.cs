@@ -48,6 +48,13 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Attribute.Rating.Value == minRating);
         }
         
+        if (request.OnlyMaximumRating != null && request.OnlyMaximumRating.Value)
+        {
+            var maxRating = result.Max(x => x.Attribute.Rating.Value);
+            result = result
+                .Where(x => x.Attribute.Rating.Value == maxRating);
+        }
+        
         return result.ToList();
     }
 }
