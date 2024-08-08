@@ -16,6 +16,13 @@ public class ProductService(IProductsCollection productsCollection) : IProductSe
                 .Where(x => x.Price == minPrice);
         }
         
+        if (request.OnlyMaximumPrice != null && request.OnlyMaximumPrice.Value)
+        {
+            var maxPrice = result.Max(p => p.Price);
+            result = result
+                .Where(x => x.Price == maxPrice);
+        }
+        
         return result.ToList();
     }
 }
